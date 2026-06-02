@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="theme-color" content="#0a0a0f" />
+    <title>Submit Site - CYBER NAV</title>
+    <link rel="shortcut icon" href="./assets/images/favicon.png" />
+    <meta name="keywords" content="submit, website, cyber nav" />
+    <meta name="description" content="Submit your website to CYBER NAV neural network" />
+
+    <link rel="stylesheet" id="block-library-css"
+        href="./assets/css/block-library.min-5.6.2.css" type="text/css" media="all" />
+    <link rel="stylesheet" id="iconfont-css" href="./assets/css/iconfont-3.03029.1.css"
+        type="text/css" media="all" />
+    <link rel="stylesheet" id="bootstrap-css" href="./assets/css/bootstrap.min-4.3.1.css"
+        type="text/css" media="all" />
+    <link rel="stylesheet" id="iowen-css" href="./assets/css/style-3.03029.1.css"
+        type="text/css" media="all" />
+    <link rel="stylesheet" id="custom-css" href="./assets/css/custom-style.css"
+        type="text/css" media="all" />
+    <link rel="stylesheet" id="fortawesome-css" href="./assets/fontawesome-5.15.4/css/all.min.css" type="text/css" />
+
+    <style>
+        body {
+            background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 50%, #0f0f1a 100%);
+            min-height: 100vh;
+        }
+
+        .submit-container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 40px;
+            background: rgba(10, 10, 20, 0.9);
+            border-radius: 12px;
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            box-shadow: 0 0 40px rgba(0, 255, 255, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+
+        .submit-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+            position: relative;
+        }
+
+        .submit-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #00ffff, transparent);
+        }
+
+        .submit-header h1 {
+            font-size: 28px;
+            color: #00ffff;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+            letter-spacing: 2px;
+        }
+
+        .submit-header p {
+            color: #8080a0;
+            font-size: 14px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #00ffff;
+            font-weight: 500;
+        }
+
+        .form-group label .required {
+            color: #ff00ff;
+            margin-left: 3px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            border-radius: 6px;
+            font-size: 14px;
+            background: rgba(10, 10, 20, 0.8);
+            color: #e0e0ff;
+            transition: all 0.3s;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: #00ffff;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+        }
+
+        .form-control::placeholder {
+            color: rgba(0, 255, 255, 0.4);
+        }
+
+        .form-control.error {
+            border-color: #ff0055;
+            box-shadow: 0 0 10px rgba(255, 0, 85, 0.3);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        select.form-control {
+            cursor: pointer;
+        }
+
+        select.form-control option {
+            background: #0a0a0f;
+            color: #e0e0ff;
+        }
+
+        .error-message {
+            color: #ff0055;
+            font-size: 12px;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, rgba(0, 255, 255, 0.2), rgba(255, 0, 255, 0.2));
+            border: 1px solid rgba(0, 255, 255, 0.5);
+            color: #00ffff;
+            border-radius: 30px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+            letter-spacing: 2px;
+        }
+
+        .submit-btn:hover:not(:disabled) {
+            background: linear-gradient(135deg, rgba(0, 255, 255, 0.4), rgba(255, 0, 255, 0.4));
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .submit-btn:disabled {
+            background: rgba(100, 100, 120, 0.3);
+            border-color: rgba(100, 100, 120, 0.5);
+            color: #606080;
+            cursor: not-allowed;
+            text-shadow: none;
+        }
+
+        .back-home {
+            text-align: center;
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(0, 255, 255, 0.1);
+        }
+
+        .back-home a {
+            color: #00ffff;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .back-home a:hover {
+            color: #ff00ff;
+            text-shadow: 0 0 10px rgba(255, 0, 255, 0.5);
+        }
+
+        .success-message {
+            background: rgba(0, 255, 100, 0.1);
+            border: 1px solid rgba(0, 255, 100, 0.3);
+            color: #00ff66;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
+            text-shadow: 0 0 10px rgba(0, 255, 100, 0.5);
+        }
+
+        .guidelines {
+            background: rgba(0, 255, 255, 0.05);
+            border: 1px solid rgba(0, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+
+        .guidelines h3 {
+            font-size: 16px;
+            color: #00ffff;
+            margin-bottom: 12px;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+        }
+
+        .guidelines ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .guidelines li {
+            color: #a0a0c0;
+            font-size: 14px;
+            margin-bottom: 8px;
+            list-style-type: square;
+        }
+
+        .char-count {
+            text-align: right;
+            font-size: 12px;
+            color: rgba(0, 255, 255, 0.6);
+            margin-top: 5px;
+        }
+
+        .form-group:last-child {
+            margin-bottom: 0;
+        }
+
+        .cyber-icon {
+            color: #ff00ff;
+            text-shadow: 0 0 15px rgba(255, 0, 255, 0.5);
+            margin-right: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .submit-container {
+                margin: 20px;
+                padding: 25px;
+            }
+
+            .submit-header h1 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+
+<body class="io-grey-mode">
+    <div class="submit-container">
+        <div class="submit-header">
+            <h1><i class="fas fa-transmit cyber-icon"></i> SUBMIT TO MATRIX</h1>
+            <p>Submit your website to the neural network navigation system</p>
+        </div>
+
+        <div class="success-message" id="successMessage">
+            <i class="fas fa-check-circle"></i> Submission successful! We will review your website shortly.
+        </div>
+
+        <div class="guidelines">
+            <h3><i class="fas fa-shield-alt"></i> SUBMISSION GUIDELINES</h3>
+            <ul>
+                <li>Ensure website content is legal and compliant with regulations</li>
+                <li>Website must be accessible and free of malicious content</li>
+                <li>Provide accurate website information for review</li>
+                <li>Review process takes 3-5 business days</li>
+            </ul>
+        </div>
+
+        <form id="submitForm">
+            <div class="form-group">
+                <label for="siteName">
+                    Site Name<span class="required">*</span>
+                </label>
+                <input type="text" id="siteName" name="siteName" class="form-control"
+                       placeholder="Enter website name" maxlength="50" required>
+                <div class="error-message" id="siteNameError">Please enter site name</div>
+            </div>
+
+            <div class="form-group">
+                <label for="siteUrl">
+                    Site URL<span class="required">*</span>
+                </label>
+                <input type="url" id="siteUrl" name="siteUrl" class="form-control"
+                       placeholder="https://example.com" required>
+                <div class="error-message" id="siteUrlError">Please enter valid URL</div>
+            </div>
+
+            <div class="form-group">
+                <label for="category">
+                    Category<span class="required">*</span>
+                </label>
+                <select id="category" name="category" class="form-control" required>
+                    <option value="">Select category</option>
+                    <option value="常用工具">Tools</option>
+                    <option value="科研办公">Research</option>
+                    <option value="开发设计">Development</option>
+                    <option value="效率办公">Productivity</option>
+                    <option value="社交媒体">Social</option>
+                    <option value="资源下载">Resources</option>
+                    <option value="生活服务">Services</option>
+                    <option value="学习教育">Education</option>
+                    <option value="其他">Other</option>
+                </select>
+                <div class="error-message" id="categoryError">Please select category</div>
+            </div>
+
+            <div class="form-group">
+                <label for="description">
+                    Description<span class="required">*</span>
+                </label>
+                <textarea id="description" name="description" class="form-control"
+                          placeholder="Brief description of your website"
+                          maxlength="200" required></textarea>
+                <div class="char-count">
+                    <span id="descCount">0</span>/200
+                </div>
+                <div class="error-message" id="descriptionError">Please enter description</div>
+            </div>
+
+            <div class="form-group">
+                <label for="keywords">
+                    Keywords
+                </label>
+                <input type="text" id="keywords" name="keywords" class="form-control"
+                       placeholder="Comma separated, e.g. tools, online, free" maxlength="100">
+            </div>
+
+            <div class="form-group">
+                <label for="email">
+                    Contact Email<span class="required">*</span>
+                </label>
+                <input type="email" id="email" name="email" class="form-control"
+                       placeholder="For review notifications" required>
+                <div class="error-message" id="emailError">Please enter valid email</div>
+            </div>
+
+            <div class="form-group">
+                <label for="contact">
+                    Additional Contact
+                </label>
+                <input type="text" id="contact" name="contact" class="form-control"
+                       placeholder="Optional: QQ, WeChat or other contact" maxlength="50">
+            </div>
+
+            <button type="submit" class="submit-btn" id="submitBtn">
+                <i class="fas fa-transmit"></i> INITIATE SUBMISSION
+            </button>
+        </form>
+
+        <div class="back-home">
+            <a href="/"><i class="fas fa-home"></i> RETURN TO CYBER NAV</a>
+        </div>
+    </div>
+
+    <script src="./assets/js/jquery.min-3.2.1.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#description').on('input', function() {
+                const count = $(this).val().length;
+                $('#descCount').text(count);
+            });
+
+            function validateForm() {
+                let isValid = true;
+                $('.form-control').removeClass('error');
+                $('.error-message').hide();
+
+                const siteName = $('#siteName').val().trim();
+                if (!siteName) {
+                    $('#siteName').addClass('error');
+                    $('#siteNameError').show();
+                    isValid = false;
+                }
+
+                const siteUrl = $('#siteUrl').val().trim();
+                const urlPattern = /^https?:\/\/.+\..+/i;
+                if (!siteUrl || !urlPattern.test(siteUrl)) {
+                    $('#siteUrl').addClass('error');
+                    $('#siteUrlError').show();
+                    isValid = false;
+                }
+
+                const category = $('#category').val();
+                if (!category) {
+                    $('#category').addClass('error');
+                    $('#categoryError').show();
+                    isValid = false;
+                }
+
+                const description = $('#description').val().trim();
+                if (!description) {
+                    $('#description').addClass('error');
+                    $('#descriptionError').show();
+                    isValid = false;
+                }
+
+                const email = $('#email').val().trim();
+                const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!email || !emailPattern.test(email)) {
+                    $('#email').addClass('error');
+                    $('#emailError').show();
+                    isValid = false;
+                }
+
+                return isValid;
+            }
+
+            $('#submitForm').on('submit', function(e) {
+                e.preventDefault();
+
+                if (!validateForm()) {
+                    return;
+                }
+
+                const $submitBtn = $('#submitBtn');
+                $submitBtn.prop('disabled', true).html('<i class="fas fa-spinner fa-spin"></i> PROCESSING...');
+
+                const formData = {
+                    siteName: $('#siteName').val().trim(),
+                    siteUrl: $('#siteUrl').val().trim(),
+                    category: $('#category').val(),
+                    description: $('#description').val().trim(),
+                    keywords: $('#keywords').val().trim(),
+                    email: $('#email').val().trim(),
+                    contact: $('#contact').val().trim(),
+                    submitTime: new Date().toISOString()
+                };
+
+                setTimeout(function() {
+                    $('#submitForm').hide();
+                    $('#successMessage').show();
+                    $submitBtn.prop('disabled', false).html('<i class="fas fa-transmit"></i> INITIATE SUBMISSION');
+                }, 1500);
+            });
+
+            $('.form-control').on('input change', function() {
+                $(this).removeClass('error');
+                $(this).siblings('.error-message').hide();
+            });
+        });
+    </script>
+</body>
+</html>

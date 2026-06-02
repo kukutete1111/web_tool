@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="theme-color" content="#0a0a0f" />
+    <title>404 - Neural Path Not Found | CYBER NAV</title>
+    <link rel="shortcut icon" href="./assets/images/favicon.png" />
+    <link rel="stylesheet" id="fortawesome-css" href="./assets/fontawesome-5.15.4/css/all.min.css" type="text/css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 50%, #0f0f1a 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Courier New', monospace;
+            overflow: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(rgba(0,255,255,0.03) 1px, transparent 0), 
+                linear-gradient(90deg, rgba(0,255,255,0.03) 1px, transparent 0);
+            background-size: 30px 30px;
+        }
+
+        .scan-line {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #00ffff, transparent);
+            animation: scan 3s linear infinite;
+        }
+
+        @keyframes scan {
+            0% { top: 0; opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { top: 100%; opacity: 0; }
+        }
+
+        .container {
+            text-align: center;
+            z-index: 1;
+            max-width: 600px;
+            padding: 40px;
+        }
+
+        .error-code {
+            font-size: 120px;
+            font-weight: bold;
+            color: #00ffff;
+            text-shadow: 
+                0 0 20px rgba(0,255,255,0.5),
+                0 0 40px rgba(0,255,255,0.3),
+                0 0 60px rgba(0,255,255,0.2);
+            animation: glitch 2s infinite;
+            margin-bottom: 20px;
+        }
+
+        @keyframes glitch {
+            0%, 90%, 100% {
+                text-shadow: 
+                    0 0 20px rgba(0,255,255,0.5),
+                    0 0 40px rgba(0,255,255,0.3);
+            }
+            92% {
+                text-shadow: 
+                    2px 0 #ff00ff,
+                    -2px 0 #00ffff,
+                    0 0 20px rgba(0,255,255,0.5);
+            }
+            94% {
+                text-shadow: 
+                    -2px 0 #ff00ff,
+                    2px 0 #00ffff,
+                    0 0 20px rgba(0,255,255,0.5);
+            }
+            96% {
+                text-shadow: 
+                    1px 1px #ff00ff,
+                    -1px -1px #00ffff,
+                    0 0 20px rgba(0,255,255,0.5);
+            }
+        }
+
+        .error-message {
+            font-size: 24px;
+            color: #e0e0ff;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .error-subtitle {
+            font-size: 16px;
+            color: #8080a0;
+            margin-bottom: 40px;
+        }
+
+        .cyber-icon {
+            font-size: 64px;
+            color: #ff00ff;
+            text-shadow: 0 0 30px rgba(255,0,255,0.5);
+            margin-bottom: 30px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .btn-home {
+            display: inline-block;
+            padding: 15px 50px;
+            background: linear-gradient(135deg, rgba(0,255,255,0.2), rgba(255,0,255,0.2));
+            border: 1px solid rgba(0,255,255,0.5);
+            color: #00ffff;
+            text-decoration: none;
+            border-radius: 30px;
+            font-size: 16px;
+            text-shadow: 0 0 10px rgba(0,255,255,0.5);
+            transition: all 0.3s;
+            letter-spacing: 2px;
+        }
+
+        .btn-home:hover {
+            background: linear-gradient(135deg, rgba(0,255,255,0.4), rgba(255,0,255,0.4));
+            box-shadow: 0 0 40px rgba(0,255,255,0.4);
+            transform: translateY(-3px);
+        }
+
+        .btn-home i {
+            margin-right: 10px;
+        }
+
+        .neural-path {
+            font-size: 14px;
+            color: rgba(0,255,255,0.6);
+            margin-top: 30px;
+            font-family: monospace;
+            letter-spacing: 1px;
+        }
+
+        .loading-dots {
+            display: inline-flex;
+            gap: 5px;
+            margin-left: 5px;
+        }
+
+        .dot {
+            width: 6px;
+            height: 6px;
+            background: #00ffff;
+            border-radius: 50%;
+            animation: blink 1.4s infinite both;
+        }
+
+        .dot:nth-child(2) { animation-delay: 0.2s; }
+        .dot:nth-child(3) { animation-delay: 0.4s; }
+
+        @keyframes blink {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; box-shadow: 0 0 10px #00ffff; }
+        }
+
+        .border-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            height: 80%;
+            border: 1px solid rgba(0,255,255,0.1);
+            border-radius: 20px;
+            box-shadow: 
+                inset 0 0 60px rgba(0,255,255,0.05),
+                0 0 30px rgba(0,255,255,0.1);
+            pointer-events: none;
+        }
+
+        @media (max-width: 768px) {
+            .error-code {
+                font-size: 80px;
+            }
+
+            .error-message {
+                font-size: 18px;
+            }
+
+            .container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="scan-line"></div>
+    <div class="border-glow"></div>
+    
+    <div class="container">
+        <div class="cyber-icon">
+            <i class="fas fa-brain"></i>
+        </div>
+        
+        <div class="error-code">404</div>
+        
+        <div class="error-message">NEURAL PATH NOT FOUND</div>
+        
+        <div class="error-subtitle">
+            The requested resource could not be located in the cyber network
+        </div>
+        
+        <a href="/" class="btn-home">
+            <i class="fas fa-home"></i>
+            RETURN TO MATRIX
+        </a>
+        
+        <div class="neural-path">
+            <span class="text-muted">Scanning for alternative routes</span>
+            <span class="loading-dots">
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </span>
+        </div>
+    </div>
+</body>
+</html>
