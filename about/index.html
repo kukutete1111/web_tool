@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="theme-color" content="#0a0a0f" />
+    <title>关于 - CYBER NAV</title>
+    <link rel="shortcut icon" href="../assets/images/favicon.png" />
+    <meta name="keywords" content="cyber, navigation, tools" />
+    <meta name="description" content="Cyberpunk style web navigation portal" />
+
+    <link rel="stylesheet" id="block-library-css"
+        href="../assets/css/block-library.min-5.6.2.css" type="text/css" media="all" />
+    <link rel="stylesheet" id="iconfont-css" href="../assets/css/iconfont-3.03029.1.css"
+        type="text/css" media="all" />
+    <link rel="stylesheet" id="bootstrap-css" href="../assets/css/bootstrap.min-4.3.1.css"
+        type="text/css" media="all" />
+    <link rel="stylesheet" id="iowen-css" href="../assets/css/style-3.03029.1.css"
+        type="text/css" media="all" />
+    <link rel="stylesheet" id="custom-css" href="../assets/css/custom-style.css"
+        type="text/css" media="all" />
+    <link rel="stylesheet" id="fortawesome-css" href="../assets/fontawesome-5.15.4/css/all.min.css" type="text/css" />
+
+    <style>
+        body {
+            background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 50%, #0f0f1a 100%);
+            padding: 20px 0;
+            min-height: 100vh;
+        }
+
+        .about-container {
+            max-width: 900px;
+            margin: 50px auto;
+            background: rgba(10, 10, 20, 0.9);
+            border-radius: 12px;
+            box-shadow: 0 0 40px rgba(0, 255, 255, 0.1),
+                        0 0 80px rgba(255, 0, 255, 0.05),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+            border: 1px solid rgba(0, 255, 255, 0.2);
+        }
+
+        .about-header {
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a3e 50%, #0f0f23 100%);
+            color: #00ffff;
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+        }
+
+        .about-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #00ffff, transparent);
+        }
+
+        .about-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.5), transparent);
+        }
+
+        .about-header h1 {
+            font-size: 32px;
+            margin: 0 0 10px 0;
+            font-weight: 600;
+            text-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+            letter-spacing: 4px;
+        }
+
+        .about-header p {
+            font-size: 16px;
+            margin: 0;
+            opacity: 0.8;
+            color: #a0a0ff;
+        }
+
+        .about-content {
+            padding: 40px 30px;
+        }
+
+        .section {
+            margin-bottom: 35px;
+            position: relative;
+        }
+
+        .section::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, #00ffff, #ff00ff);
+            border-radius: 2px;
+        }
+
+        .section:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-title {
+            font-size: 22px;
+            color: #00ffff;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            padding-left: 15px;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+        }
+
+        .section-title i {
+            margin-right: 10px;
+            color: #ff00ff;
+            text-shadow: 0 0 15px rgba(255, 0, 255, 0.5);
+        }
+
+        .section-content {
+            font-size: 15px;
+            line-height: 1.8;
+            color: #c0c0d0;
+            padding-left: 15px;
+        }
+
+        .section-content p {
+            margin-bottom: 15px;
+        }
+
+        .section-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+            padding-left: 15px;
+        }
+
+        .skill-item {
+            background: rgba(0, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            transition: all 0.3s;
+            border: 1px solid rgba(0, 255, 255, 0.1);
+        }
+
+        .skill-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 255, 255, 0.2);
+            border-color: rgba(0, 255, 255, 0.4);
+        }
+
+        .skill-item i {
+            font-size: 32px;
+            color: #00ffff;
+            margin-bottom: 12px;
+            text-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+        }
+
+        .skill-item .skill-name {
+            font-weight: 600;
+            color: #e0e0ff;
+            font-size: 14px;
+        }
+
+        .contact-list {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0 0 15px;
+        }
+
+        .contact-list li {
+            padding: 15px 20px;
+            margin-bottom: 12px;
+            background: rgba(255, 0, 255, 0.05);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s;
+            border: 1px solid rgba(255, 0, 255, 0.1);
+        }
+
+        .contact-list li:hover {
+            background: rgba(255, 0, 255, 0.1);
+            border-color: rgba(255, 0, 255, 0.3);
+            transform: translateX(5px);
+        }
+
+        .contact-list li i {
+            margin-right: 12px;
+            color: #ff00ff;
+            width: 24px;
+            text-align: center;
+            text-shadow: 0 0 10px rgba(255, 0, 255, 0.5);
+        }
+
+        .contact-list li strong {
+            color: #00ffff;
+            margin-right: 8px;
+            min-width: 80px;
+        }
+
+        .contact-list li a {
+            color: #00ffff;
+            text-decoration: none;
+            word-break: break-all;
+            transition: color 0.3s;
+        }
+
+        .contact-list li a:hover {
+            color: #ff00ff;
+            text-shadow: 0 0 10px rgba(255, 0, 255, 0.5);
+        }
+
+        .back-home {
+            text-align: center;
+            padding: 30px;
+            background: rgba(0, 255, 255, 0.03);
+            border-top: 1px solid rgba(0, 255, 255, 0.1);
+        }
+
+        .back-home a {
+            display: inline-block;
+            padding: 12px 40px;
+            background: linear-gradient(135deg, rgba(0, 255, 255, 0.2), rgba(255, 0, 255, 0.2));
+            color: #00ffff;
+            text-decoration: none;
+            border-radius: 30px;
+            transition: all 0.3s;
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+        }
+
+        .back-home a:hover {
+            background: linear-gradient(135deg, rgba(0, 255, 255, 0.4), rgba(255, 0, 255, 0.4));
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 255, 255, 0.3);
+        }
+
+        .back-home a i {
+            margin-right: 8px;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(0, 255, 255, 0.1) 0%, rgba(255, 0, 255, 0.1) 100%);
+            border-left: 4px solid #00ffff;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0 20px 15px;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.1);
+        }
+
+        .highlight-box p {
+            margin: 0;
+            color: #e0e0ff;
+            line-height: 1.8;
+        }
+
+        .cyber-text {
+            color: #00ffff;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+        }
+
+        .glitch-effect {
+            animation: glitch 2s infinite;
+        }
+
+        @keyframes glitch {
+            0%, 90%, 100% {
+                text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+            }
+            92% {
+                text-shadow: 2px 0 #ff00ff, -2px 0 #00ffff;
+            }
+            94% {
+                text-shadow: -2px 0 #ff00ff, 2px 0 #00ffff;
+            }
+            96% {
+                text-shadow: 1px 1px #ff00ff, -1px -1px #00ffff;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .about-container {
+                margin: 20px;
+            }
+
+            .about-header {
+                padding: 30px 20px;
+            }
+
+            .about-header h1 {
+                font-size: 26px;
+            }
+
+            .about-content {
+                padding: 30px 20px;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+        }
+    </style>
+</head>
+
+<body class="io-grey-mode">
+    <div class="about-container">
+        <div class="about-header">
+            <h1 class="glitch-effect"><i class="fas fa-terminal"></i> CYBER NAV</h1>
+            <p>NEURAL NETWORK NAVIGATION SYSTEM</p>
+        </div>
+
+        <div class="about-content">
+            <div class="section">
+                <h2 class="section-title">
+                    <i class="fas fa-cpu"></i>
+                    SYSTEM OVERVIEW
+                </h2>
+                <div class="section-content">
+                    <div class="highlight-box">
+                        <p>CYBER NAV is a next-generation web navigation portal designed for the digital frontier. 
+                           Experience seamless access to essential tools and resources in the cyberpunk era.</p>
+                    </div>
+                    <p>This navigation system provides categorized access to development tools, creative resources, 
+                       research platforms, and entertainment portals. Built with cutting-edge web technologies, 
+                       it delivers a futuristic browsing experience.</p>
+                    <p>Navigate through a curated collection of websites and tools that empower your digital journey 
+                       in the modern cyber landscape.</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">
+                    <i class="fas fa-microchip"></i>
+                    TECH STACK
+                </h2>
+                <div class="skills-grid">
+                    <div class="skill-item">
+                        <i class="fab fa-html5"></i>
+                        <div class="skill-name">HTML5</div>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fab fa-css3-alt"></i>
+                        <div class="skill-name">CSS3</div>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fab fa-js"></i>
+                        <div class="skill-name">JavaScript</div>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fab fa-bootstrap"></i>
+                        <div class="skill-name">Bootstrap</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">
+                    <i class="fas fa-eye"></i>
+                    FEATURES
+                </h2>
+                <div class="section-content">
+                    <p><span class="cyber-text">Neural Search:</span> Advanced search functionality with multiple search engines integration.</p>
+                    <p><span class="cyber-text">Category Matrix:</span> Organized navigation through various resource categories.</p>
+                    <p><span class="cyber-text">Adaptive Interface:</span> Responsive design for all device dimensions.</p>
+                    <p><span class="cyber-text">Cyber Aesthetics:</span> Futuristic visual theme with neon accents.</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">
+                    <i class="fas fa-signal"></i>
+                    CONNECT
+                </h2>
+                <ul class="contact-list">
+                    <li>
+                        <i class="fab fa-github"></i>
+                        <strong>GitHub:</strong>
+                        <a href="https://github.com/kukutete1111/web_tool" target="_blank">github.com/kukutete1111/web_tool</a>
+                    </li>
+                    <li>
+                        <i class="fas fa-globe"></i>
+                        <strong>Website:</strong>
+                        <a href="#" target="_blank">cyber-nav.tech</a>
+                    </li>
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <strong>Contact:</strong>
+                        <a href="mailto:contact@cyber-nav.tech">contact@cyber-nav.tech</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="back-home">
+            <a href="/">
+                <i class="fas fa-home"></i>
+                RETURN TO MATRIX
+            </a>
+        </div>
+    </div>
+
+    <script src="../assets/js/jquery.min-3.2.1.js"></script>
+</body>
+</html>
